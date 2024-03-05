@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "both": "concurrently \"npm run dev\" \"nodemon Backend/index.js\"",
-    "host": "vite --host"
+    "host": "vite --host --port 3000"
   },
   "dependencies": {
     "@tsparticles/react": "^3.0.0",

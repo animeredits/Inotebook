@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 export const DashBoard = () => {
-  const handleClick = () => {
-    localStorage.removeItem("token");
-  };
+
   return (
     <>
       <div className=" text-center" style={{ marginTop: "50px" }}>
@@ -16,7 +14,7 @@ export const DashBoard = () => {
           <Link
             to="/SignUp"
             className="btn  btn-lg"
-            onClick={handleClick()}
+        
             style={{ border: "1px solid #2b226c", color: "white" }}
           >
             Get Started
