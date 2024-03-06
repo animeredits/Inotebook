@@ -47,8 +47,8 @@ const NoteItem = (props) => {
               style={{
                 overflow: "hidden",
                 display: "-webkit-box",
-                "-webkit-line-clamp": 2,
-                "-webkit-box-orient": "vertical",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
               }}
             >
               {note.title}

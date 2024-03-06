@@ -36,7 +36,7 @@ const AddNote = (props) => {
         <form className="my-8">
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
-              Title            
+              Title
             </label>
             <input
               type="text"

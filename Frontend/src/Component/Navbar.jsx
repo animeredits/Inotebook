@@ -5,13 +5,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   let navigate = useNavigate();
 
-  const handlelogOut = () => {
+  const handleLogout = () => {
     localStorage.removeItem("token");
     toast.success("Log Out successfully");
     navigate("/Login");
   };
 
-  const auth = localStorage.getItem("token");
+  const userLoggedIn = localStorage.getItem("token");
 
   let location = useLocation();
 
@@ -19,7 +19,7 @@ const Navbar = () => {
     <div>
       <nav
         className="navbar fixed-top navbar-expand navbar-dark"
-        style={{ backdropFilter: "blur(50px)"}}
+        style={{ backdropFilter: "blur(50px)" }}
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
@@ -37,7 +37,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {auth && (
+            {userLoggedIn && (
               <ul className="navbar-nav me-auto  mb-lg-0">
                 <li className="nav-item">
                   <Link
@@ -61,13 +61,28 @@ const Navbar = () => {
                 </li>
               </ul>
             )}
-            {!auth ? (
-              <form className="d-flex"></form>
-            ) : (
+            {!userLoggedIn && ( // Conditionally render login/signup only if not logged in
+              <form className="d-flex">
+                <Link
+                  to="/Login"
+                  className="btn mx-2"
+                  style={{ border: "1px solid #2b226c", color: "white" }}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/SignUp"
+                  className="btn "
+                  style={{ border: "1px solid #2b226c", color: "white" }}
+                >
+                  Signup
+                </Link>
+              </form>
+            )}
+            {userLoggedIn && ( // Conditionally render logout button only if logged in
               <button
-                onClick={handlelogOut}
-                className="btn"
-                style={{ border: "1px solid #2b226c", color: "white" }}
+                onClick={handleLogout}
+                className="btn btn-sm btn-outline-danger"
               >
                 Log Out
               </button>

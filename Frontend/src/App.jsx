@@ -1,5 +1,6 @@
 import Navbar from "./Component/Navbar";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Home from "./Component/Home";
 import About from "./Component/About";
 import NoteState from "./Context/Notes/NotesState";
@@ -11,9 +12,12 @@ import ParticlesBackground from "./Component/ParticlesBackground";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 function App() {
+  const location = useLocation();
   return (
     <>
-      <ParticlesBackground />
+      {!(location.pathname === "/Login" || location.pathname === "/SignUp") && (
+        <ParticlesBackground />
+      )}
       <NoteState>
         <Navbar />
         <Toaster

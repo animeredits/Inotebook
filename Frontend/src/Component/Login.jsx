@@ -24,13 +24,13 @@ const Login = () => {
         if (json.authtoken) {
           localStorage.setItem("token", json.authtoken);
           navigate("/Home");
-            resolve('Logged In Successfully!', {
-              icon: '👏',
-            });
+          resolve("Logged In Successfully!", {
+            icon: "👏",
+          });
         } else if (json.error) {
           reject(json.error);
         } else {
-          reject("An unknown error occured!");   
+          reject("An unknown error occured!");
         }
       }),
       {
