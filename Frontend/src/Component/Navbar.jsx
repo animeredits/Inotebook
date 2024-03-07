@@ -66,15 +66,11 @@ const Navbar = () => {
                 <Link
                   to="/Login"
                   className="btn mx-2"
-                  style={{ border: "1px solid #2b226c", color: "white" }}
+                  style={{ color: "white" }}
                 >
                   Login
                 </Link>
-                <Link
-                  to="/SignUp"
-                  className="btn "
-                  style={{ border: "1px solid #2b226c", color: "white" }}
-                >
+                <Link to="/SignUp" className="btn " style={{ color: "white" }}>
                   Signup
                 </Link>
               </form>
