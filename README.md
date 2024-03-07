@@ -6,7 +6,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://inotebook-cloud-notes.vercel.app/](https://inotebook-cloud-notes.vercel.app/)
+[https://inotebookbyrk.netlify.app/](https://inotebookbyrk.netlify.app/)
 
   
   
