@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js",
-    "bulid": "npm i"
+    "start": "node index.js"
   },
   "author": "Rk",
   "license": "ISC",
@@ -22,9 +21,11 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.2.1",
     "punycode": "^2.3.1",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "webpack": "^5.90.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "webpack-cli": "^5.1.4"
   }
 }
