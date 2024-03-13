@@ -6,7 +6,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://inotebookbyrk.netlify.app/](https://inotebookbyrk.netlify.app/)
+[https://inotesbooks.netlify.app/](https://inotesbooks.netlify.app/)
 
   
   
