@@ -111,8 +111,9 @@ const Login = () => {
                   name="email"
                   value={credentials.email}
                   onChange={onchange}
+                  autoComplete="username"
                 />
-                <i>Email</i>
+                <i> Username or Email</i>
               </div>
               <div className={Styles.inputBox}>
                 <input
@@ -122,6 +123,7 @@ const Login = () => {
                   name="password"
                   value={credentials.password}
                   onChange={onchange}
+                  autoComplete="current-password"
                 />
                 <i>Password</i>
               </div>

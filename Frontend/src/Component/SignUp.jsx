@@ -13,25 +13,27 @@ const SignUp = () => {
     e.preventDefault();
     toast.promise(
       new Promise(async (resolve, reject) => {
-        const response = await fetch(`${import.meta.env.VITE_SIGNUP_API}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: credentials.email,
-            name: credentials.name,
-            password: credentials.password,
-          }),
-        });
-        const json = await response.json();
-        if (json.success) {
-          resolve("Account Created Successfully!");
-          navigate("/Home");
-        } else if (json.error) {
-          reject(json.error);
-        } else {
-          reject("An unknown error occured!");
+        try {
+          const response = await fetch(`${import.meta.env.VITE_SIGNUP_API}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: credentials.email,
+              name: credentials.name,
+              password: credentials.password,
+            }),
+          });
+          const json = await response.json();
+          if (response.ok) {
+            resolve("Account Created Successfully!");
+            navigate("/Home");
+          } else {
+            reject(json.error || "An unknown error occurred!");
+          }
+        } catch (error) {
+          reject("An error occurred while processing your request.");
         }
       }),
       {
@@ -123,6 +125,7 @@ const SignUp = () => {
                   name="email"
                   value={credentials.email}
                   onChange={onchange}
+                  autoComplete="username"
                 />
                 <i>Email</i>
               </div>
@@ -134,6 +137,7 @@ const SignUp = () => {
                   name="password"
                   value={credentials.password}
                   onChange={onchange}
+                  autoComplete="current-password"
                 />
                 <i>Password</i>
               </div>
