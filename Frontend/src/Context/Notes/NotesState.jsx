@@ -1,21 +1,33 @@
 import { useState } from "react";
 import NoteContext from "./NoteContext";
+
 const NoteState = (props) => {
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
-  //Get All Note
-  let getNote = async () => {
 
-    const response = await fetch(`${import.meta.env.VITE_ALLNOTES}`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        "auth-token": localStorage.getItem('token')
-      },
-    });
-    const json = await response.json();
-    setNotes(json)
+    //Get All Note
+  let getNote = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_ALLNOTES}`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          "auth-token": localStorage.getItem('token')
+        },
+      });
+
+      if (!response.ok) {
+        console.error("Failed to fetch notes");
+        return;
+      }
+
+      const json = await response.json();
+      setNotes(json);
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+    }
   };
+
 
   //Add Note
   let addNote = async (title, description, tag) => {

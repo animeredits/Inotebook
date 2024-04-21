@@ -36,7 +36,13 @@ const Login = () => {
       {
         loading: "Logging In...",
         success: (data) => data,
-        error: (error) => error,
+        error: (error) => {
+          if (error === "User not found") {
+            return "User not found. Please check your credentials.";
+          } else {
+            return error; 
+          }
+        },
       }
     );
   };

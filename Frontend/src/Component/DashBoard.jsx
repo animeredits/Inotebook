@@ -56,12 +56,8 @@ export const DashBoard = () => {
           <div className="row">
             <div className="col-md-4 ">
               <div
-                className="card mb-4 text-light text-white "
-                style={{
-                  border: "1px solid #2b226c",
-                  background: "none",
-                  height: "170px",
-                }}
+                className="card mb-4 text-light"
+                style={{ border: "1px solid #2b226c", background: "none" }}
               >
                 <div className="card-body ">
                   <p className="card-text">
@@ -96,14 +92,10 @@ export const DashBoard = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-4 ">
+            <div className="col-md-4 text-light">
               <div
                 className="card mb-4 text-light "
-                style={{
-                  border: "1px solid #2b226c",
-                  background: "none",
-                  height: "170px",
-                }}
+                style={{ border: "1px solid #2b226c", background: "none" }}
               >
                 <div className="card-body">
                   <p className="card-text">

@@ -4,13 +4,26 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import NoteContext from "../Context/Notes/NoteContext";
 import toast from "react-hot-toast";
-const UpdateNotes = (props) => {
+import Spiner from "./Spiner"
+const UpdateNotes = () => {
   const context = useContext(NoteContext);
   const { notes, getNote, editNote } = context;
   let navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+
+    const fetchData = async () => {
+      setLoading(true); // Set loading to true when fetching starts
+      try {
+        await getNote();
+        setLoading(false); // Set loading to false when fetching is done
+      } catch (error) {
+        setLoading(false); // Set loading to false if there's an error
+        console.error("Error fetching notes:", error);
+      }
+    };
     if (localStorage.getItem("token")) {
-      getNote();
+      fetchData();
     } else {
       navigate("/Login");
     }
@@ -48,7 +61,7 @@ const UpdateNotes = (props) => {
 
   return (
     <>
-      <AddNote showAlert={props.showAlert} />
+      <AddNote/>
 
       <button
         ref={ref}
@@ -160,9 +173,10 @@ const UpdateNotes = (props) => {
       >
         <h2>Your Notes</h2>
         <div className="container mx-1">
-          {notes.length === 0 && "No Notes to display"}
+        {loading && <Spiner />}
+          {notes.length === 0 && "No Notes to display" }
         </div>
-        {notes.map((note) => {
+        {!loading && notes.map((note) => {
           return (
             <NoteItem key={note._id} updateNote={updateNote} note={note} />
           );
