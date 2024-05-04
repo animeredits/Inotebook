@@ -115,6 +115,7 @@ const Login = () => {
                   required
                   id="email"
                   name="email"
+                  inputMode="email"
                   value={credentials.email}
                   onChange={onchange}
                   autoComplete="username"

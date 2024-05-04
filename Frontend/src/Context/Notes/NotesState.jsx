@@ -28,22 +28,33 @@ const NoteState = (props) => {
     }
   };
 
+ //Add Notes
+ let addNote = async (title, description, tag) => {
+  // API call to add a new note
+  const response = await fetch(`${import.meta.env.VITE_ADDNOTES}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'auth-token': localStorage.getItem('token')
+    },
+    body: JSON.stringify({ title, description, tag })
+  });
 
-  //Add Note
-  let addNote = async (title, description, tag) => {
-    //Api call 
-    const response = await fetch(`${import.meta.env.VITE_ADDNOTES}`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'auth-token': localStorage.getItem('token')
-      },
-      body: JSON.stringify({ title, description, tag })
-    });
+  const newNote = await response.json();
+  
+  // Combine the new note with the existing notes
+  const updatedNotes = [newNote, ...notes];
 
-    const note = await response.json();
-    setNotes(notes.concat(note));
-  };
+  // Sort the combined array based on creation time
+  const sortedNotes = updatedNotes.sort((a, b) => {
+    const timeA = new Date(a.createdAt).getTime();
+    const timeB = new Date(b.createdAt).getTime();
+    return timeB - timeA; // Sort in descending order
+  });
+
+  // Set the sorted notes state
+  setNotes(sortedNotes);
+};
 
   //Delete Note
   let deleteNote = async (id) => {

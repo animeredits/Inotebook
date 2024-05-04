@@ -13,12 +13,12 @@ const UpdateNotes = () => {
   useEffect(() => {
 
     const fetchData = async () => {
-      setLoading(true); // Set loading to true when fetching starts
+      setLoading(true); 
       try {
         await getNote();
-        setLoading(false); // Set loading to false when fetching is done
+        setLoading(false); 
       } catch (error) {
-        setLoading(false); // Set loading to false if there's an error
+        setLoading(false); 
         console.error("Error fetching notes:", error);
       }
     };
@@ -58,6 +58,8 @@ const UpdateNotes = () => {
   const onchange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
+
+ 
 
   return (
     <>

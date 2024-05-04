@@ -112,6 +112,7 @@ const SignUp = () => {
                   required
                   id="name"
                   name="name"
+                  inputMode="email"
                   value={credentials.name}
                   onChange={onchange}
                 />

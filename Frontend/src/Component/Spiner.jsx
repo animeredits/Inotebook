@@ -1,5 +1,5 @@
 import React from "react";
-import loading from "./8UiQ.gif";
+import loading from "../assets/8UiQ.gif";
 const Spiner = () => {
   return (
     <>
