@@ -61,6 +61,8 @@ const NoteItem = (props) => {
                 right: "5px",
                 cursor: "pointer",
                 display: "flex",
+                width:"65px",
+                height:"25px"
               }}
             >
               <i

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="mt-10">
+    <div className="mt-10" style={{position:"relative", top: "10px"}}>
       <footer className="footer mt-auto py-3 ">
         <div className="container text-center ">
           <span className="text-muted-light">
