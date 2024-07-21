@@ -11,6 +11,7 @@ import { DashBoard } from "./Component/DashBoard";
 import ParticlesBackground from "./Component/ParticlesBackground";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
+import Spiner from "./Component/Spiner";
 function App() {
   const location = useLocation();
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/About" element={<About />} />
           </Routes>
         </div>
+        <Spiner/>
         <Footer />
       </NoteState>
     </>

@@ -1,7 +1,16 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./assets/Quicksand-Regular.otf') format('woff2');
+}
+body {
+  font-family: 'Quicksand', sans-serif; 
+}
+
 body::-webkit-scrollbar {
   width: 0.5rem;
   height: 10px;
   background-color: #ffffff00;
+  
 }
 
 body::-webkit-scrollbar-thumb {
@@ -13,3 +22,4 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background: #aedefc;
 }
+
