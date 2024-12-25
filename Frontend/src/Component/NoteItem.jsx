@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import NoteContext from "../Context/Notes/NoteContext";
 import { toast } from "react-hot-toast";
+
 const NoteItem = (props) => {
   const context = useContext(NoteContext);
   const { deleteNote } = context;
@@ -8,10 +9,7 @@ const NoteItem = (props) => {
 
   const handleDelete = async (id) => {
     try {
-      // Perform deletion using context function
       await deleteNote(id);
-
-      // Show success toast after successful deletion
       toast.success("Note deleted successfully!", {
         position: "bottom-center",
       });
@@ -24,21 +22,40 @@ const NoteItem = (props) => {
         },
       });
     }
-  }; 
+  };
+
+  // Function to make URLs clickable
+  const makeLinksClickable = (text) => {
+    const urlPattern = /(https?:\/\/[^\s]+)/g;
+    return text.split(urlPattern).map((part, index) =>
+      urlPattern.test(part) ? (
+        <a key={index} href={part} target="_blank" rel="noopener noreferrer" className="note-link">
+          {part}
+        </a>
+      ) : (
+        part
+      )
+    );
+  };
 
   return (
     <div className="col-md-3 col-sm-6">
       <div
         className="card my-3"
-        style={{ border: "1px solid #2b226c", margin: "auto" }}
+        style={{
+          border: "1px solid rgba(255, 255, 255, 0.125)",
+          margin: "auto",
+        }}
       >
         <div
           className="card-body"
           style={{
-            backgroundColor: "#060417",
+            backgroundColor: "#171717",
             color: "white",
             position: "relative",
             borderRadius: "5px",
+            backdropFilter: "blur(15px) saturate(180%)",
+            WebkitBackdropFilter: "blur(15px) saturate(180%)",
           }}
         >
           <div className="d-flex align-items-center justify-content-between">
@@ -61,8 +78,8 @@ const NoteItem = (props) => {
                 right: "5px",
                 cursor: "pointer",
                 display: "flex",
-                width:"65px",
-                height:"25px"
+                width: "65px",
+                height: "25px",
               }}
             >
               <i
@@ -78,7 +95,7 @@ const NoteItem = (props) => {
             </div>
           </div>
           <p className="card-text" style={{ marginBottom: "5px" }}>
-            {note.description}
+            {makeLinksClickable(note.description)}
           </p>
           <p className="card-text">{note.tag}</p>
         </div>

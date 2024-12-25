@@ -4,21 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import NoteContext from "../Context/Notes/NoteContext";
 import toast from "react-hot-toast";
-import Spiner from "./Spiner"
+import Spiner from "./Spiner";
+
 const UpdateNotes = () => {
   const context = useContext(NoteContext);
   const { notes, getNote, editNote } = context;
   let navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
 
+  useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); 
+      setLoading(true);
       try {
         await getNote();
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
-        setLoading(false); 
+        setLoading(false);
         console.error("Error fetching notes:", error);
       }
     };
@@ -59,11 +60,12 @@ const UpdateNotes = () => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
- 
+  // Sort notes by date, latest first
+  const sortedNotes = notes.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
     <>
-      <AddNote/>
+      <AddNote />
 
       <button
         ref={ref}
@@ -76,14 +78,21 @@ const UpdateNotes = () => {
       </button>
 
       <div
-        className="modal fade "
+        className="modal fade"
         id="exampleModal"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog ">
-          <div className="modal-content" style={{ backgroundColor: "#060417" }}>
+          <div
+            className="modal-content"
+            style={{
+              background: "transparent",
+              backdropFilter: "blur(15px) saturate(180%)",
+              WebkitBackdropFilter: "blur(15px) saturate(180%)",
+            }}
+          >
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Edit Note
@@ -97,7 +106,6 @@ const UpdateNotes = () => {
             </div>
             <div className="modal-body">
               {/* update form */}
-
               <form className="my-3">
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
@@ -156,9 +164,7 @@ const UpdateNotes = () => {
                 Close
               </button>
               <button
-                disabled={
-                  note.etitle.length < 5 || note.edescription.length < 5
-                }
+                disabled={note.etitle.length < 5 || note.edescription.length < 5}
                 onClick={handleClick}
                 type="button"
                 className="btn btn-primary"
@@ -169,20 +175,19 @@ const UpdateNotes = () => {
           </div>
         </div>
       </div>
-      <div
-        className="row "
-        style={{ backgroundColor: "#060417", color: "white", margin: "auto" }}
-      >
+
+      <div className="row " style={{ margin: "auto" }}>
         <h2>Your Notes</h2>
         <div className="container mx-1">
-        {loading && <Spiner />}
-          {notes.length === 0 && "No Notes to display" }
+          {loading && <Spiner />}
+          {sortedNotes.length === 0 && "No Notes to display"}
         </div>
-        {!loading && notes.map((note) => {
-          return (
-            <NoteItem key={note._id} updateNote={updateNote} note={note} />
-          );
-        })}
+        {!loading &&
+          sortedNotes.map((note) => {
+            return (
+              <NoteItem key={note._id} updateNote={updateNote} note={note} />
+            );
+          })}
       </div>
     </>
   );

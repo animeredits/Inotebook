@@ -15,29 +15,31 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
     }
 })
 
-// ROUTE 2 : Add A New Notes Using : POST '/api/notes/addnote'. login required
-
+// ROUTE 2 : Add A New Note Using : POST '/api/notes/addnote'. login required
 router.post('/addnote', fetchuser, [
     body('title', 'Enter a valid title').isLength({ min: 3 }),
-    body('description', 'description must be atleast 8 characters').isLength({ min: 5 }),
-    body('tag', 'Enter a tag')], async (req, res) => {
-        try {
-            // if ther are errors, return Bad request and the errors
-            const { title, description, tag } = req.body;
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(400).json({ errors: errors.array() });
-            }
-            const note = new Note({
-                title, description, tag, user: req.user.id
-            })
-            const SaveNote = await note.save()
-            res.json(SaveNote)
-        } catch (error) {
-            console.error(error.massage);
-            res.status(500).send("Internal Server Error")
+    body('description', 'Description must be at least 8 characters').isLength({ min: 5 }),
+    body('tag', 'Enter a valid tag')], async (req, res) => {
+    try {
+        // If there are errors, return Bad request and the errors
+        const { title, description, tag } = req.body;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
-    })
+        
+        // Create new note with the fetched user id and the date will be automatically added
+        const note = new Note({
+            title, description, tag, user: req.user.id
+        });
+        const SaveNote = await note.save();
+        res.json(SaveNote);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 // ROUTE 3 : Update an existing Note Using : PUT '/api/notes/updatenote:id'. login required
 router.put('/updatenote/:id', fetchuser, async (req, res) => {
     const { title, description, tag } = req.body;

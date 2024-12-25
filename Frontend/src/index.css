@@ -1,16 +1,21 @@
 @font-face {
-  font-family: 'Quicksand';
-  src: url('./assets/Quicksand-Regular.otf') format('woff2');
+  font-family: "Quicksand";
+  src: url("./assets/Quicksand-Regular.otf") format("woff2");
 }
 body {
-  font-family: 'Quicksand', sans-serif; 
+  font-family: "Quicksand", sans-serif;
+  /* background: url(./assets/pexels-didsss-1707580.jpg) no-repeat center; */
+  /* background-size: cover; */
+  /* backdrop-filter: blur(3px) saturate(180%); */
+  /* -webkit-backdrop-filter: blur(3px) saturate(180%); */
+  background: #0f1419;
+  color: white;
 }
 
 body::-webkit-scrollbar {
   width: 0.5rem;
   height: 10px;
-  background-color: #ffffff00;
-  
+  background-color: #0f1419;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -22,4 +27,3 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background: #aedefc;
 }
-

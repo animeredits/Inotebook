@@ -8,17 +8,14 @@ import Login from "./Component/Login";
 import SignUp from "./Component/SignUp";
 import Footer from "./Component/Footer";
 import { DashBoard } from "./Component/DashBoard";
-import ParticlesBackground from "./Component/ParticlesBackground";
+// import ParticlesBackground from "./Component/ParticlesBackground";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
-import Spiner from "./Component/Spiner";
 function App() {
   const location = useLocation();
   return (
     <>
-      {!(location.pathname === "/Login" || location.pathname === "/SignUp") && (
-        <ParticlesBackground />
-      )}
+      {!(location.pathname === "/Login" || location.pathname === "/SignUp")}
       <NoteState>
         <Navbar />
         <Toaster
@@ -36,7 +33,6 @@ function App() {
             <Route path="/About" element={<About />} />
           </Routes>
         </div>
-        <Spiner/>
         <Footer />
       </NoteState>
     </>

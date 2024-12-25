@@ -8,7 +8,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     toast.success("Log Out successfully");
-    navigate("/Login");
+    navigate("/");
   };
 
   const userLoggedIn = localStorage.getItem("token");
@@ -22,9 +22,11 @@ const Navbar = () => {
         style={{ backdropFilter: "blur(50px)" }}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            INotebook
-          </Link>
+          {!userLoggedIn && ( // Conditionally render brand name only if not logged in
+            <Link className="navbar-brand" >
+              INotebook
+            </Link>
+          )}
           <button
             className="navbar-toggler"
             type="button"
@@ -38,7 +40,7 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             {userLoggedIn && (
-              <ul className="navbar-nav me-auto  mb-lg-0">
+              <ul className="navbar-nav me-auto mb-lg-0">
                 <li className="nav-item">
                   <Link
                     className={`nav-link ${

@@ -86,7 +86,7 @@ const AddNote = (props) => {
             disabled={note.title.length < 5 || note.description.length < 5}
             type="submit"
             className="btn"
-            style={{ border: "1px solid #2b226c", color: "white" }}
+            style={{ border: "1px solid #fff", color: "white" }}
             onClick={handleClick}
           >
             Add Note

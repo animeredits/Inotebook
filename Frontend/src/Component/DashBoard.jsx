@@ -1,29 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 export const DashBoard = () => {
+  const userLoggedIn = localStorage.getItem("token"); // Check if user is logged in
+
   return (
     <>
-      <div className=" text-center" style={{ marginTop: "50px" }}>
+      <div className=" text-center" style={{ marginTop: "60px" }}>
         <div className="container ">
-          <h1 className="display-5">Welcome to iNoteBook</h1>
+          <h1 className="display-5.5.5">Welcome to iNoteBook</h1>
           <p className="lead">
             Your all-in-one solution for note-taking, organizing, and
             collaboration
           </p>
-          <Link
-            to="/SignUp"
-            className="btn  btn-lg"
-            style={{ border: "1px solid #2b226c", color: "white" }}
-          >
-            Get Started
-          </Link>
+          {/* Conditionally render the 'Get Started' button only if user is not logged in */}
+          {!userLoggedIn && (
+            <Link
+              to="/SignUp"
+              className="btn btn-lg"
+              style={{ border: "1px solid white", color: "white" }}
+            >
+              Get Started
+            </Link>
+          )}
         </div>
       </div>
 
       <div className="container py-5 ">
         <div className="row">
           <div className="col-md-6">
-            <h2 className="display-5">Effortlessly Take and Organize Notes</h2>
+            <h2 className="display-5.5">Effortlessly Take and Organize Notes</h2>
             <p className="lead">
               With iNoteBook, you can capture your thoughts, ideas, and
               important information seamlessly. Our user-friendly interface
@@ -36,7 +42,7 @@ export const DashBoard = () => {
             </p>
           </div>
           <div className="col-md-6">
-            <h2 className="display-5">Collaborate and Share with Others</h2>
+            <h2 className="display-5.5">Collaborate and Share with Others</h2>
             <p className="lead">
               iNoteBook makes collaboration easy. Share your notes with
               colleagues, classmates, or friends and work together in real-time.
@@ -52,12 +58,12 @@ export const DashBoard = () => {
 
       <div className="bg-none">
         <div className="container">
-          <h2 className="display-5 text-center mb-5">What Our Users Say</h2>
+          <h2 className="display-5.5 text-center mb-5">What Our Users Say</h2>
           <div className="row">
             <div className="col-md-4 ">
               <div
                 className="card mb-4 text-light"
-                style={{ border: "1px solid #2b226c", background: "none" }}
+                style={{ border: "1px solid white", background: "none" }}
               >
                 <div className="card-body ">
                   <p className="card-text">
@@ -76,7 +82,7 @@ export const DashBoard = () => {
             <div className="col-md-4">
               <div
                 className="card mb-4 text-light"
-                style={{ border: "1px solid #2b226c", background: "none" }}
+                style={{ border: "1px solid white", background: "none" }}
               >
                 <div className="card-body">
                   <p className="card-text">
@@ -95,7 +101,7 @@ export const DashBoard = () => {
             <div className="col-md-4 text-light">
               <div
                 className="card mb-4 text-light "
-                style={{ border: "1px solid #2b226c", background: "none" }}
+                style={{ border: "1px solid white", background: "none" }}
               >
                 <div className="card-body">
                   <p className="card-text">
