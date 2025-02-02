@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import Styles from "../Styles/Login.module.css";
+import Styles from "../../Styles/Auth.module.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });

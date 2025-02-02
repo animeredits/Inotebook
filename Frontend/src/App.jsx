@@ -1,14 +1,14 @@
-import Navbar from "./Component/Navbar";
+import Navbar from "./Components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import Home from "./Component/Home";
-import About from "./Component/About";
+import Home from "./Components/Home";
+import About from "./Components/About";
 import NoteState from "./Context/Notes/NotesState";
-import Login from "./Component/Login";
-import SignUp from "./Component/SignUp";
-import Footer from "./Component/Footer";
-import { DashBoard } from "./Component/DashBoard";
-// import ParticlesBackground from "./Component/ParticlesBackground";
+import Login from "./Components/Auth/Login";
+import SignUp from "./Components/Auth/SignUp";
+import Footer from "./Components/Footer";
+import { DashBoard } from "./Components/DashBoard";
+// import ParticlesBackground from "./Components/ParticlesBackground";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 function App() {
@@ -23,7 +23,6 @@ function App() {
           background="#060417"
           reverseOrder={false}
         />
-
         <div className="container">
           <Routes>
             <Route path="/" element={<DashBoard />} />

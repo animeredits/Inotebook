@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 export default function About() {
@@ -9,7 +10,7 @@ export default function About() {
           <p className="lead">
             iNoteBook is a cloud-based notes saving website designed to help you
             keep your notes organized and accessible from anywhere. Whether
-            you're a student, professional, or simply someone who loves taking
+            you&apos;re a student, professional, or simply someone who loves taking
             notes, iNotebook is the perfect companion for you.
           </p>
           <p>With iNoteBook, you can:</p>

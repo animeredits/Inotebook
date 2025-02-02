@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Styles from  '../Styles/Spiner.module.css'
 const Spiner = () => {
   return (
     <>
-     <div class={Styles.loader}></div>
+    <div className={Styles.loader}></div>
     </>
   );
 };

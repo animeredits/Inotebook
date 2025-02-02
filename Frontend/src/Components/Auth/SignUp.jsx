@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import Styles from "../Styles/Login.module.css";
+import Styles from "../../Styles/Auth.module.css";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
