@@ -6,9 +6,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://inotesbooks.vercel.app](https://inotesbooks.vercel.app/)
-
-  
+[Inotesbooks](https://inotesbooks.vercel.app/) 
   
 <h2>🧐 Features</h2>
 
